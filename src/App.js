@@ -33,6 +33,15 @@ function App() {
         setExchangeRate(data.rates[firstCurrency]);
       });
   }, []);
+
+  function handleFromAmountChange(e) {
+    setAmount(e.target.value);
+    setAmountInFromCurrency(true);
+  }
+  function handleToAmountChange(e) {
+    setAmount(e.target.value);
+    setAmountInFromCurrency(false);
+  }
   return (
     <div className="App">
       <Container fluid>
@@ -46,14 +55,18 @@ function App() {
             <CurrencyCon
               currencyOptions={currencyOptions}
               selectedCurrency={fromCurrency}
-              onChangeCurrency={(e) => setFromCurrencyOptions(e.target.value)}
+              onChangeCurrency={(e) => setFromCurrency(e.target.value)}
+              amount={fromAmount}
+              onChangeAmount={handleFromAmountChange}
             />
           </Col>
           <Col xs={12} md={6}>
             <CurrencyCon
               currencyOptions={currencyOptions}
               selectedCurrency={toCurrency}
-              onChangeCurrency={(e) => setToCurrencyOptions(e.target.value)}
+              onChangeCurrency={(e) => setToCurrency(e.target.value)}
+              amount={toAmount}
+              onChangeAmount={handleToAmountChange}
             />
           </Col>
         </Row>
