@@ -1,3 +1,17 @@
 .group {
   display: flex;
+  margin: 0.5em 0 1em;
+}
+
+.CurrencyCon__form {
+  width: 70%;
+  margin: 0 auto;
+}
+.CurrencyCon__input {
+  margin: 2em 0 1em;
+}
+input[type="number"],
+select {
+  border-radius: 0.5em !important;
+  outline: none;
 }

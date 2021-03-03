@@ -23,17 +23,7 @@ function CurrencyCon(props) {
         <Row>
           <Col>
             <div className="group">
-              <InputGroup className="p-2">
-                <FormControl
-                  type="number"
-                  placeholder="Enter Amount"
-                  aria-label="Enter Amount"
-                  aria-describedby="basic-addon1"
-                  value={amount}
-                  onChange={onChangeAmount}
-                />
-              </InputGroup>
-              <Form className="p-2">
+              <Form className="CurrencyCon__form">
                 <Form.Group controlId="exampleForm.SelectCustom">
                   <Form.Control
                     as="select"
@@ -41,7 +31,6 @@ function CurrencyCon(props) {
                     value={selectedCurrency}
                     onChange={onChangeCurrency}
                   >
-                    <option disabled>Select Currency</option>
                     {currencyOptions.map((option) => (
                       <option key={option} value={option}>
                         {option}
@@ -49,6 +38,16 @@ function CurrencyCon(props) {
                     ))}
                   </Form.Control>
                 </Form.Group>
+                <InputGroup className="CurrencyCon__input">
+                  <FormControl
+                    type="number"
+                    placeholder="Enter Amount"
+                    aria-label="Enter Amount"
+                    aria-describedby="basic-addon1"
+                    value={amount}
+                    onChange={onChangeAmount}
+                  />
+                </InputGroup>
               </Form>
             </div>
           </Col>

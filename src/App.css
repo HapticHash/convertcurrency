@@ -1,3 +1,40 @@
 .App {
   text-align: center;
 }
+h1 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  color: #fff;
+}
+.App__card {
+  width: 80%;
+  padding: 2em !important;
+  margin: 2em auto;
+  background-color: #293241 !important;
+  color: #fff;
+  border-radius: 0.8em !important;
+  box-shadow: 0 25px 50px -12px #29324188 !important;
+}
+.App__inSwap {
+  width: 50%;
+  background-color: #efefef;
+  color: #111;
+  border-radius: 0.8em;
+  padding: 2em;
+  margin: 0 auto;
+  box-shadow: 0 25px 50px -12px #efefef27 !important;
+}
+.App__inSwap p,
+.App__card p {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+table {
+  text-align: left;
+}
+td {
+  border: none !important;
+}
+td:nth-child(even) {
+  text-align: right;
+}

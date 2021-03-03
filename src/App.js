@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row, Table } from "react-bootstrap";
 import "./App.css";
 import CurrencyCon from "./components/CurrencyCon";
+import NavBar from "./components/NavBar";
 
 const BASE_URL = "https://api.exchangeratesapi.io/latest";
 function App() {
@@ -34,6 +35,14 @@ function App() {
       });
   }, []);
 
+  useEffect(() => {
+    if (fromCurrency != null && toCurrency != null) {
+      fetch(`${BASE_URL}?base=${fromCurrency}&symbol=${toCurrency}`)
+        .then((res) => res.json())
+        .then((data) => setExchangeRate(data.rates[toCurrency]));
+    }
+  }, [fromCurrency, toCurrency]);
+
   function handleFromAmountChange(e) {
     setAmount(e.target.value);
     setAmountInFromCurrency(true);
@@ -44,6 +53,7 @@ function App() {
   }
   return (
     <div className="App">
+      <NavBar />
       <Container fluid>
         <Row>
           <Col>
@@ -52,22 +62,51 @@ function App() {
         </Row>
         <Row>
           <Col xs={12} md={6}>
-            <CurrencyCon
-              currencyOptions={currencyOptions}
-              selectedCurrency={fromCurrency}
-              onChangeCurrency={(e) => setFromCurrency(e.target.value)}
-              amount={fromAmount}
-              onChangeAmount={handleFromAmountChange}
-            />
+            <div className="App__card">
+              <p>From</p>
+              <CurrencyCon
+                currencyOptions={currencyOptions}
+                selectedCurrency={fromCurrency}
+                onChangeCurrency={(e) => setFromCurrency(e.target.value)}
+                amount={fromAmount}
+                onChangeAmount={handleFromAmountChange}
+              />
+            </div>
           </Col>
           <Col xs={12} md={6}>
-            <CurrencyCon
-              currencyOptions={currencyOptions}
-              selectedCurrency={toCurrency}
-              onChangeCurrency={(e) => setToCurrency(e.target.value)}
-              amount={toAmount}
-              onChangeAmount={handleToAmountChange}
-            />
+            <div className="App__card">
+              <p>To</p>
+              <CurrencyCon
+                currencyOptions={currencyOptions}
+                selectedCurrency={toCurrency}
+                onChangeCurrency={(e) => setToCurrency(e.target.value)}
+                amount={toAmount}
+                onChangeAmount={handleToAmountChange}
+              />
+            </div>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <div className="App__inSwap">
+              <p>In This Swap</p>
+              <Table responsive hover>
+                <tbody>
+                  <tr>
+                    <td>Dev Fees</td>
+                    <td> $10 </td>
+                  </tr>
+                  <tr>
+                    <td>Gus Fees</td>
+                    <td> $10 </td>
+                  </tr>
+                  <tr>
+                    <td>Slippage</td>
+                    <td> 2% </td>
+                  </tr>
+                </tbody>
+              </Table>
+            </div>
           </Col>
         </Row>
       </Container>

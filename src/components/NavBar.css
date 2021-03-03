@@ -1,0 +1,27 @@
+.NavBar {
+  width: 100%;
+}
+.NavBar__Nav {
+  background-color: transparent;
+}
+.nav-link {
+  color: #eee !important;
+  transition: ease-in-out 0.2s;
+  font-size: 1rem;
+  font-weight: 500;
+}
+.nav-link:hover {
+  color: #fff !important;
+  transition: ease-in-out 0.2s;
+}
+
+.NavBar__btn {
+  background-color: #293241 !important;
+  border-radius: 2em !important;
+  padding: 0.55em 2em !important;
+  font-weight: 500 !important;
+}
+.NavBar__btn img {
+  margin-top: -3px !important;
+  margin-right: 0.5em;
+}
